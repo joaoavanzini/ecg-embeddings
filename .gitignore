@@ -1,2 +1,4 @@
 data/
 trained_model/
+.ipynb_checkpoints/
+vitalDB/.ipynb_checkpoints/
