@@ -2,6 +2,7 @@ import argparse
 from tqdm.keras import TqdmCallback
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 from autoencoder_model import AutoencoderModel
 from data_loader import DataLoader
@@ -26,6 +27,9 @@ class AutoencoderScript:
                                                          verbose=0, callbacks=[TqdmCallback(verbose=1)])
         return history
 
+    def calculate_rmse(self, true_data, reconstructed_data):
+        return np.sqrt(np.mean(np.square(true_data - reconstructed_data)))
+        
     def plot_loss(self, history):
         plot_df = pd.DataFrame.from_dict({'train_loss': history.history['loss']})
         plot_df.plot(logy=True, figsize=(15, 5), fontsize=12)
